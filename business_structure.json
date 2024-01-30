@@ -1,97 +1,83 @@
 {
     "address": {
         "venue": {
-            "course": [
-                {
-                    "booking/invoice": {
-                        "attendee": [
-                            {},
-                            {}
-                        ]
-                    },
-                    "attendee": [
-                        {},
-                        {}
-                    ]
+            "course1": {
+                "booking/invoice1": {
+                    "attendee1": {},
+                    "attendee2": {}
                 },
-                {
-                    "booking/invoice": {
-                        "attendee": [
-                            {},
-                            {}
-                        ]
-                    },
-                    "attendee": [
-                        {},
-                        {}
-                    ]
-                }
-            ],
-            "hotel": [
-                {},
-                {}
-            ]
+                "booking/invoice2": {
+                    "attendee1": {},
+                    "attendee2": {}
+                },
+                "attendee1": {},
+                "attendee2": {}
+            },
+            "course2": {
+                "booking/invoice1": {
+                    "attendee1": {},
+                    "attendee2": {}
+                },
+                "booking/invoice2": {
+                    "attendee1": {},
+                    "attendee2": {}
+                },
+                "attendee1": {},
+                "attendee2": {}
+            },
+            "hotel1": {},
+            "hotel2": {}
         },
         "hotel": {}
     },
     "party": {
-        "booking/invoice": [
-            {
-                "attendee": [
-                    {},
-                    {}
-                ]
-            },
-            {
-                "attendee": [
-                    {},
-                    {}
-                ]
-            }
-        ],
-        "enquiry": [
-            {
-                "course_type": {}
-            },
-            {
-                "course_type": {}
-            }
-        ]
+        "booking/invoice1": {
+            "attendee1": {},
+            "attendee2": {}
+        },
+        "booking/invoice2": {
+            "attendee1": {},
+            "attendee2": {}
+        },
+        "enquiry1": {
+            "course_type": {}
+        },
+        "enquiry2": {
+            "course_type": {}
+        }
     },
     "course_type": {
-        "course_certificate": [
-            {
-                "certificate": {}
-            },
-            {
-                "certificate": {}
-            }
-        ],
-        "course": [
-            {
-                "booking/invoice": {
-                    "attendee": [
-                        {},
-                        {}
-                    ]
+        "course_certificate1": {
+            "certificate": {}
+        },
+        "course_certificate2": {
+            "certificate": {}
+        },
+        "course": {
+            "course1": {
+                "booking/invoice1": {
+                    "attendee1": {},
+                    "attendee2": {}
                 },
-                "attendee": [
-                    {},
-                    {}
-                ]
-            },
-            {
-                "booking/invoice": {
-                    "attendee": [
-                        {},
-                        {}
-                    ]
+                "booking/invoice2": {
+                    "attendee1": {},
+                    "attendee2": {}
                 },
-                "attendee": [
-                    {},
-                    {}
-                ]
+                "attendee1": {},
+                "attendee2": {}
+            },
+            "course2": {
+                "booking/invoice1": {
+                    "attendee1": {},
+                    "attendee2": {}
+                },
+                "booking/invoice2": {
+                    "attendee1": {},
+                    "attendee2": {}
+                },
+                "attendee1": {},
+                "attendee2": {}
             }
-        ]
+        }
     }
 }
