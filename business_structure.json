@@ -1,0 +1,97 @@
+{
+    "address": {
+        "venue": {
+            "course": [
+                {
+                    "booking/invoice": {
+                        "attendee": [
+                            {},
+                            {}
+                        ]
+                    },
+                    "attendee": [
+                        {},
+                        {}
+                    ]
+                },
+                {
+                    "booking/invoice": {
+                        "attendee": [
+                            {},
+                            {}
+                        ]
+                    },
+                    "attendee": [
+                        {},
+                        {}
+                    ]
+                }
+            ],
+            "hotel": [
+                {},
+                {}
+            ]
+        },
+        "hotel": {}
+    },
+    "party": {
+        "booking/invoice": [
+            {
+                "attendee": [
+                    {},
+                    {}
+                ]
+            },
+            {
+                "attendee": [
+                    {},
+                    {}
+                ]
+            }
+        ],
+        "enquiry": [
+            {
+                "course_type": {}
+            },
+            {
+                "course_type": {}
+            }
+        ]
+    },
+    "course_type": {
+        "course_certificate": [
+            {
+                "certificate": {}
+            },
+            {
+                "certificate": {}
+            }
+        ],
+        "course": [
+            {
+                "booking/invoice": {
+                    "attendee": [
+                        {},
+                        {}
+                    ]
+                },
+                "attendee": [
+                    {},
+                    {}
+                ]
+            },
+            {
+                "booking/invoice": {
+                    "attendee": [
+                        {},
+                        {}
+                    ]
+                },
+                "attendee": [
+                    {},
+                    {}
+                ]
+            }
+        ]
+    }
+}
