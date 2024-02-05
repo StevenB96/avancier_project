@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .base_admin import BaseAdmin
 from django import forms
 from django_select2.forms import Select2Widget
 
@@ -40,9 +41,17 @@ class HotelAdminForm(forms.ModelForm):
     )
 
 
-class HotelAdmin(admin.ModelAdmin):
+class HotelAdmin(BaseAdmin):
     form = HotelAdminForm
     exclude = ['_id']
+
+    def get_search_results(self, request, queryset, search_term):
+        addressesList = self.db['address'].find()
+        hotelList = [address.get('hotel')['_id']
+                for address in addressesList if address.get('hotel')]
+        queryset = Hotel.objects.filter(_id__in=hotelList)
+
+        return queryset, False
 
 
 admin.site.register(Hotel, HotelAdmin)

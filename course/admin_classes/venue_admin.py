@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .base_admin import BaseAdmin
 from django import forms
 from django_select2.forms import Select2Widget
 
@@ -31,9 +32,17 @@ class VenueAdminForm(forms.ModelForm):
     )
 
 
-class VenueAdmin(admin.ModelAdmin):
+class VenueAdmin(BaseAdmin):
     form = VenueAdminForm
     exclude = ['_id', 'courses', 'hotels']
+
+    def get_search_results(self, request, queryset, search_term):
+        addressesList = self.db['address'].find()
+        venueList = [address.get('venue')['_id']
+                for address in addressesList if address.get('venue')]
+        queryset = Venue.objects.filter(_id__in=venueList)
+
+        return queryset, False
 
 
 admin.site.register(Venue, VenueAdmin)

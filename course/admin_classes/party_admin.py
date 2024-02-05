@@ -1,11 +1,12 @@
 from django.contrib import admin
+from .base_admin import BaseAdmin
 
 from ..model_classes import (
     Party,
 )
 
 
-class PartyAdmin(admin.ModelAdmin):
+class PartyAdmin(BaseAdmin):
     exclude = ['_id', 'bookinginvoices', 'enquiries']
 
 

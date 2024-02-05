@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .base_admin import BaseAdmin
 from django import forms
 from django_select2.forms import Select2Widget
 
@@ -40,7 +41,7 @@ class AttendeeAdminForm(forms.ModelForm):
     )
 
 
-class AttendeeAdmin(admin.ModelAdmin):
+class AttendeeAdmin(BaseAdmin):
     form = AttendeeAdminForm
     exclude = ['_id']
 
