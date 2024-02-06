@@ -97,7 +97,7 @@ class Command(BaseCommand):
                     name=f"Can {crud_operation} {content_type_record.model}",
                 )
 
-                if (content_type_record.app_label == "course"):
+                if (content_type_record.app_label == "main"):
                     # Assign to group
                     business_group_record.permissions.add(permission_record)
 
