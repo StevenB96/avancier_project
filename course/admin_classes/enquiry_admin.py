@@ -15,27 +15,27 @@ class EnquiryAdminForm(forms.ModelForm):
         model = Enquiry
         fields = '__all__'
         widgets = {
-            'course_type_id': Select2Widget,
-            'party_id': Select2Widget
+            'course_type': Select2Widget,
+            'party': Select2Widget
         }
         required = {
-            'course_type_id': False,
-            'party_id': False,
+            'course_type': False,
+            'party': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['course_type_id'].choices = [(course_type._id, str(
+        self.fields['course_type'].choices = [(course_type.id, str(
             course_type)) for course_type in CourseType.objects.all()]
-        self.fields['party_id'].choices = [(party._id, str(
+        self.fields['party'].choices = [(party.id, str(
             party)) for party in Party.objects.all()]
 
-    course_type_id = forms.ChoiceField(
+    course_type = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
-    party_id = forms.ChoiceField(
+    party = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -43,7 +43,7 @@ class EnquiryAdminForm(forms.ModelForm):
 
 class EnquiryAdmin(BaseAdmin):
     form = EnquiryAdminForm
-    exclude = ['_id']
+    exclude = []
 
 
 admin.site.register(Enquiry, EnquiryAdmin)

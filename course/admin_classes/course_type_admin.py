@@ -7,7 +7,7 @@ from ..model_classes import (
 
 
 class CourseTypeAdmin(BaseAdmin):
-    exclude = ['_id', 'enquiries', 'courses', 'certificates']
+    exclude = []
 
 
 admin.site.register(CourseType, CourseTypeAdmin)

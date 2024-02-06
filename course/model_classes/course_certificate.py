@@ -1,20 +1,18 @@
 from django.db import models
 from django.utils import timezone
-from .party import Party
+from .certificate import Certificate
 from .course_type import CourseType
 
 
-class Enquiry(models.Model):
-    parties = models.ForeignKey(
-        Party,
+class CourseCertificate(models.Model):
+    certificate = models.ForeignKey(
+        Certificate,
         on_delete=models.CASCADE,
     )
-    course_types = models.ForeignKey(
+    course_type = models.ForeignKey(
         CourseType,
         on_delete=models.CASCADE,
     )
-
-    description = models.TextField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -24,9 +22,9 @@ class Enquiry(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.description} - {self.id}"
+        return f"{self.id}"
 
     class Meta:
-        verbose_name_plural = 'Enquiries'
-        db_table = 'enquiry'
+        verbose_name_plural = 'Course Certificates'
+        db_table = 'course_certificate'
         managed = True

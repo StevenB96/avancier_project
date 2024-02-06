@@ -15,27 +15,27 @@ class AttendeeAdminForm(forms.ModelForm):
         model = Attendee
         fields = '__all__'
         widgets = {
-            'bookinginvoice_id': Select2Widget,
-            'course_id': Select2Widget
+            'bookinginvoice': Select2Widget,
+            'course': Select2Widget
         }
         required = {
-            'bookinginvoice_id': False,
-            'course_id': False,
+            'bookinginvoice': False,
+            'course': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['bookinginvoice_id'].choices = [(bookinginvoice._id, str(
+        self.fields['bookinginvoice'].choices = [(bookinginvoice.id, str(
             bookinginvoice)) for bookinginvoice in Bookinginvoice.objects.all()]
-        self.fields['course_id'].choices = [
-            (course._id, str(course)) for course in Course.objects.all()]
+        self.fields['course'].choices = [
+            (course.id, str(course)) for course in Course.objects.all()]
 
-    bookinginvoice_id = forms.ChoiceField(
+    bookinginvoice = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
-    course_id = forms.ChoiceField(
+    course = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -43,7 +43,7 @@ class AttendeeAdminForm(forms.ModelForm):
 
 class AttendeeAdmin(BaseAdmin):
     form = AttendeeAdminForm
-    exclude = ['_id']
+    exclude = []
 
 
 admin.site.register(Attendee, AttendeeAdmin)

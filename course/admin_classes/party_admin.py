@@ -7,7 +7,7 @@ from ..model_classes import (
 
 
 class PartyAdmin(BaseAdmin):
-    exclude = ['_id', 'bookinginvoices', 'enquiries']
+    exclude = []
 
 
 admin.site.register(Party, PartyAdmin)

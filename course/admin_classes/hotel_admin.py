@@ -15,27 +15,27 @@ class HotelAdminForm(forms.ModelForm):
         model = Hotel
         fields = '__all__'
         widgets = {
-            'venue_id': Select2Widget,
-            'address_id': Select2Widget,
+            'venue': Select2Widget,
+            'address': Select2Widget,
         }
         required = {
-            'venue_id': False,
-            'address_id': False,
+            'venue': False,
+            'address': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['venue_id'].choices = [
-            (venue._id, str(venue)) for venue in Venue.objects.all()]
-        self.fields['address_id'].choices = [
-            (address._id, str(address)) for address in Address.objects.all()]
+        self.fields['venue'].choices = [
+            (venue.id, str(venue)) for venue in Venue.objects.all()]
+        self.fields['address'].choices = [
+            (address.id, str(address)) for address in Address.objects.all()]
 
-    venue_id = forms.ChoiceField(
+    venue = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
-    address_id = forms.ChoiceField(
+    address = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -43,15 +43,7 @@ class HotelAdminForm(forms.ModelForm):
 
 class HotelAdmin(BaseAdmin):
     form = HotelAdminForm
-    exclude = ['_id']
-
-    def get_search_results(self, request, queryset, search_term):
-        addressesList = self.db['address'].find()
-        hotelList = [address.get('hotel')['_id']
-                for address in addressesList if address.get('hotel')]
-        queryset = Hotel.objects.filter(_id__in=hotelList)
-
-        return queryset, False
+    exclude = []
 
 
 admin.site.register(Hotel, HotelAdmin)

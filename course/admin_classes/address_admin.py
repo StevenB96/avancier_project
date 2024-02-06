@@ -7,7 +7,7 @@ from ..model_classes import (
 
 
 class AddressAdmin(BaseAdmin):
-    exclude = ['_id', 'venue', 'hotel', 'bookinginvoices']
+    exclude = []
 
 
 admin.site.register(Address, AddressAdmin)

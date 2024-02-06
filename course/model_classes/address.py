@@ -1,15 +1,7 @@
-from djongo import models
-from .venue import Venue
-from .hotel import Hotel
-from .bookinginvoice import Bookinginvoice
-from .base_model import BaseModel
+from django.db import models
+from django.utils import timezone
 
-
-class Address(BaseModel):
-    venue = models.EmbeddedField(model_container=Venue)
-    hotel = models.EmbeddedField(model_container=Hotel)
-    bookinginvoices = models.ArrayField(model_container=Bookinginvoice)
-
+class Address(models.Model):
     building_name = models.CharField(max_length=255, blank=True, null=True)
     building_number_and_thoroughfare_name = models.CharField(
         max_length=255, blank=True, null=True)
@@ -20,8 +12,15 @@ class Address(BaseModel):
     county_name = models.CharField(max_length=255, blank=True, null=True)
     postcode = models.CharField(max_length=20)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.updated_at = timezone.now()
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return str(self.building_number_and_thoroughfare_name) + ' - ' + str(self._id)
+        return f"{self.building_number_and_thoroughfare_name} - {self.id}"
 
     class Meta:
         verbose_name_plural = 'Addresses'

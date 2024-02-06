@@ -1,17 +1,25 @@
-from djongo import models
-from .base_model import BaseModel
+from django.db import models
+from django.utils import timezone
 
 
-class Certificate(BaseModel):
-    course_type_id = models.CharField(max_length=255, blank=True, null=True)
+class Certificate(models.Model):
     certificate_code = models.CharField(max_length=255, blank=True, null=True)
     certificate_name = models.CharField(max_length=255, blank=True, null=True)
-    certification_body = models.CharField(max_length=255, blank=True, null=True)
+    certification_body = models.CharField(
+        max_length=255, blank=True, null=True)
     link_to_syllabus = models.CharField(max_length=255, blank=True, null=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.updated_at = timezone.now()
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return str(self.certificate_name) + ' - ' + str(self._id)
+        return f"{self.certificate_name} - {self.id}"
 
     class Meta:
         verbose_name_plural = 'Certificates'
         db_table = 'certificate'
+        managed = True

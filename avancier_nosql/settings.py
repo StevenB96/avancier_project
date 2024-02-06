@@ -78,10 +78,8 @@ WSGI_APPLICATION = 'avancier_nosql.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'avancier_nosql',
-        'HOST': '127.0.0.1',
-        'PORT': 27017,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

@@ -4,32 +4,32 @@ from django import forms
 from django_select2.forms import Select2Widget
 
 from ..model_classes import (
-    Venue,
-    CourseType,
-    Course
+    Certificate,
+    CourseCertificate,
+    CourseType
 )
 
 
-class CourseAdminForm(forms.ModelForm):
+class CourseCertificateAdminForm(forms.ModelForm):
     class Meta:
-        model = Course
+        model = CourseCertificate
         fields = '__all__'
         widgets = {
-            'venue': Select2Widget,
+            'certificate': Select2Widget,
             'course_type': Select2Widget
         }
         required = {
-            'venue': False,
+            'certificate': False,
             'course_type': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['venue'].choices = [(venue.id, str(venue)) for venue in Venue.objects.all()]
+        self.fields['certificate'].choices = [(certificate.id, str(certificate)) for certificate in Certificate.objects.all()]
         self.fields['course_type'].choices = [(course_type.id, str(course_type)) for course_type in CourseType.objects.all()]
 
-    venue = forms.ChoiceField(
+    certificate = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -39,9 +39,9 @@ class CourseAdminForm(forms.ModelForm):
     )
 
 
-class CourseAdmin(BaseAdmin):
-    form = CourseAdminForm
+class CourseCertificateAdmin(BaseAdmin):
+    form = CourseCertificateAdminForm
     exclude = []
 
 
-admin.site.register(Course, CourseAdmin)
+admin.site.register(CourseCertificate, CourseCertificateAdmin)

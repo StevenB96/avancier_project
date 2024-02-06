@@ -14,19 +14,19 @@ class VenueAdminForm(forms.ModelForm):
         model = Venue
         fields = '__all__'
         widgets = {
-            'address_id': Select2Widget,
+            'address': Select2Widget,
         }
         required = {
-            'address_id': False,
+            'address': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['address_id'].choices = [
-            (address._id, str(address)) for address in Address.objects.all()]
+        self.fields['address'].choices = [
+            (address.id, str(address)) for address in Address.objects.all()]
 
-    address_id = forms.ChoiceField(
+    address = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -34,15 +34,7 @@ class VenueAdminForm(forms.ModelForm):
 
 class VenueAdmin(BaseAdmin):
     form = VenueAdminForm
-    exclude = ['_id', 'courses', 'hotels']
-
-    def get_search_results(self, request, queryset, search_term):
-        addressesList = self.db['address'].find()
-        venueList = [address.get('venue')['_id']
-                for address in addressesList if address.get('venue')]
-        queryset = Venue.objects.filter(_id__in=venueList)
-
-        return queryset, False
+    exclude = []
 
 
 admin.site.register(Venue, VenueAdmin)
