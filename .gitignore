@@ -25,3 +25,5 @@ env/
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+admin/settings.py
