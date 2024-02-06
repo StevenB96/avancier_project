@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+    ServerName avancier-project.stevenberrisford.com
+
+    # Define the location of your Django project's WSGI file
+    WSGIScriptAlias / /home/admin/avancier-project/app.wsgi
+
+    # Optionally, specify the Python virtual environment
+    WSGIPythonHome /home/admin/avancier-project/venv
+
+    # Specify additional Python paths if needed
+    WSGIPythonPath /home/admin/avancier-project
+
+    <Directory /home/admin/avancier-project>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+</VirtualHost>
+
