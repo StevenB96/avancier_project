@@ -9,6 +9,7 @@ venv/
 env/
 *.env/
 .env/
+env.py
 
 # IDE-specific files
 .vscode/
