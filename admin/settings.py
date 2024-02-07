@@ -30,6 +30,8 @@ STATIC_ROOT = BASE_DIR / 'static/'
 
 STATIC_URL = 'static/'
 
+ADMIN_MEDIA_PREFIX = 'static/'
+
 ALLOWED_HOSTS = ['avancier-project.stevenberrisford.com']
 
 
