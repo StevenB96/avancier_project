@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-)c)s$&lepi+m6p6+!i)*_fg8w=b8y)twxw98$6_&isc7+-hn(h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = IS_DEBUGGING
 
+STATIC_URL = '/static/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 STATIC_ROOT = BASE_DIR / 'static/'
-
-STATIC_URL = 'static/'
 
 ADMIN_MEDIA_PREFIX = 'static/admin/'
 
