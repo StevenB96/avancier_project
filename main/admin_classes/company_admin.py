@@ -2,12 +2,12 @@ from django.contrib import admin
 from .base_admin import BaseAdmin
 
 from ..model_classes import (
-    Certificate,
+    Company,
 )
 
 
-class CertificateAdmin(BaseAdmin):
+class CompanyAdmin(BaseAdmin):
     exclude = ['id', 'created_at', 'updated_at']
 
 
-admin.site.register(Certificate, CertificateAdmin)
+admin.site.register(Company, CompanyAdmin)

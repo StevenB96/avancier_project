@@ -4,34 +4,32 @@ from django import forms
 from django_select2.forms import Select2Widget
 
 from ..model_classes import (
-    Venue,
+    Company,
     Address,
-    Hotel,
+    Contact
 )
 
 
-class HotelAdminForm(forms.ModelForm):
+class ContactAdminForm(forms.ModelForm):
     class Meta:
-        model = Hotel
+        model = Contact
         fields = '__all__'
         widgets = {
-            'venues': Select2Widget,
-            'address': Select2Widget,
+            'companies': Select2Widget,
+            'address': Select2Widget
         }
         required = {
-            'venues': False,
+            'companies': False,
             'address': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['venues'].choices = [
-            (venues.id, str(venues)) for venues in Venue.objects.all()]
-        self.fields['address'].choices = [
-            (address.id, str(address)) for address in Address.objects.all()]
+        self.fields['companies'].choices = [(companies.id, str(companies)) for companies in Company.objects.all()]
+        self.fields['address'].choices = [(adress.id, str(adress)) for adress in Address.objects.all()]
 
-    venues = forms.ChoiceField(
+    companies = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -41,9 +39,9 @@ class HotelAdminForm(forms.ModelForm):
     )
 
 
-class HotelAdmin(BaseAdmin):
-    form = HotelAdminForm
+class ContactAdmin(BaseAdmin):
+    form = ContactAdminForm
     exclude = ['id', 'created_at', 'updated_at']
 
 
-admin.site.register(Hotel, HotelAdmin)
+admin.site.register(Contact, ContactAdmin)

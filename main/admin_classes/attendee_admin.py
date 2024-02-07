@@ -6,7 +6,6 @@ from django_select2.forms import Select2Widget
 from ..model_classes import (
     Attendee,
     Bookinginvoice,
-    Course,
 )
 
 
@@ -15,27 +14,19 @@ class AttendeeAdminForm(forms.ModelForm):
         model = Attendee
         fields = '__all__'
         widgets = {
-            'bookinginvoice': Select2Widget,
-            'course': Select2Widget
+            'bookinginvoices': Select2Widget,
         }
         required = {
-            'bookinginvoice': False,
-            'course': False,
+            'bookinginvoices': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['bookinginvoice'].choices = [(bookinginvoice.id, str(
-            bookinginvoice)) for bookinginvoice in Bookinginvoice.objects.all()]
-        self.fields['course'].choices = [
-            (course.id, str(course)) for course in Course.objects.all()]
+        self.fields['bookinginvoices'].choices = [(bookinginvoices.id, str(
+            bookinginvoices)) for bookinginvoices in Bookinginvoice.objects.all()]
 
-    bookinginvoice = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
-    course = forms.ChoiceField(
+    bookinginvoices = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -43,7 +34,7 @@ class AttendeeAdminForm(forms.ModelForm):
 
 class AttendeeAdmin(BaseAdmin):
     form = AttendeeAdminForm
-    exclude = []
+    exclude = ['id', 'created_at', 'updated_at']
 
 
 admin.site.register(Attendee, AttendeeAdmin)

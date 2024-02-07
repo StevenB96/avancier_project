@@ -5,8 +5,7 @@ from django_select2.forms import Select2Widget
 
 from ..model_classes import (
     Course,
-    Address,
-    Party,
+    Contact,
     Bookinginvoice,
 )
 
@@ -16,35 +15,27 @@ class BookinginvoiceAdminForm(forms.ModelForm):
         model = Bookinginvoice
         fields = '__all__'
         widgets = {
-            'party': Select2Widget,
-            'address': Select2Widget,
-            'course': Select2Widget
+            'contacts': Select2Widget,
+            'courses': Select2Widget,
         }
         required = {
-            'party': False,
-            'address': False,
-            'course': False,
+            'contacts': False,
+            'courses': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['party'].choices = [
-            (party.id, str(party)) for party in Party.objects.all()]
-        self.fields['address'].choices = [
-            (address.id, str(address)) for address in Address.objects.all()]
-        self.fields['course'].choices = [
-            (course.id, str(course)) for course in Course.objects.all()]
+        self.fields['contacts'].choices = [
+            (contacts.id, str(contacts)) for contacts in Contact.objects.all()]
+        self.fields['courses'].choices = [
+            (courses.id, str(courses)) for courses in Course.objects.all()]
 
-    party = forms.ChoiceField(
+    contacts = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
-    address = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
-    course = forms.ChoiceField(
+    courses = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -52,7 +43,7 @@ class BookinginvoiceAdminForm(forms.ModelForm):
 
 class BookinginvoiceAdmin(BaseAdmin):
     form = BookinginvoiceAdminForm
-    exclude = []
+    exclude = ['id', 'created_at', 'updated_at']
 
 
 admin.site.register(Bookinginvoice, BookinginvoiceAdmin)

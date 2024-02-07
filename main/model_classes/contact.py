@@ -1,21 +1,19 @@
 from django.db import models
-from .venue import Venue
 from .address import Address
+from .company import Company
 
 
-class Hotel(models.Model):
-    venues = models.ForeignKey(
-        Venue,
-        on_delete=models.CASCADE,
-    )
+class Contact(models.Model):
     address = models.OneToOneField(
         Address,
+        on_delete=models.CASCADE,
+    )
+    companies = models.ForeignKey(
+        Company,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
     )
-    name = models.CharField(max_length=255)
-    website = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -23,6 +21,6 @@ class Hotel(models.Model):
         return f"{self.name} - {self.id}"
 
     class Meta:
-        verbose_name_plural = 'Hotels'
-        db_table = 'hotel'
+        verbose_name_plural = 'Contacts'
+        db_table = 'contact'
         managed = True

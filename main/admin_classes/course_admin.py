@@ -15,25 +15,25 @@ class CourseAdminForm(forms.ModelForm):
         model = Course
         fields = '__all__'
         widgets = {
-            'venue': Select2Widget,
-            'course_type': Select2Widget
+            'venues': Select2Widget,
+            'course_types': Select2Widget
         }
         required = {
-            'venue': False,
-            'course_type': False,
+            'venues': False,
+            'course_types': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['venue'].choices = [(venue.id, str(venue)) for venue in Venue.objects.all()]
-        self.fields['course_type'].choices = [(course_type.id, str(course_type)) for course_type in CourseType.objects.all()]
+        self.fields['venues'].choices = [(venues.id, str(venues)) for venues in Venue.objects.all()]
+        self.fields['course_types'].choices = [(course_types.id, str(course_types)) for course_types in CourseType.objects.all()]
 
-    venue = forms.ChoiceField(
+    venues = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
-    course_type = forms.ChoiceField(
+    course_types = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
@@ -41,7 +41,7 @@ class CourseAdminForm(forms.ModelForm):
 
 class CourseAdmin(BaseAdmin):
     form = CourseAdminForm
-    exclude = []
+    exclude = ['id', 'created_at', 'updated_at']
 
 
 admin.site.register(Course, CourseAdmin)

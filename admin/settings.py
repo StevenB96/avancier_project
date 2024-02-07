@@ -30,7 +30,7 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 STATIC_ROOT = BASE_DIR / 'static/'
 
-ALLOWED_HOSTS = ['avancier-project.stevenberrisford.com']
+ALLOWED_HOSTS = ['avancier-project.stevenberrisford.com', '127.0.0.1']
 
 
 # Application definition

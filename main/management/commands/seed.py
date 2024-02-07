@@ -8,12 +8,12 @@ from ...model_classes import (
     Attendee,
     Bookinginvoice,
     Course,
-    CourseCertificate,
+    Contact,
+    Company,
     CourseType,
     Venue,
     Enquiry,
     Address,
-    Party,
 )
 
 
@@ -33,12 +33,12 @@ class Command(BaseCommand):
             Attendee,
             Bookinginvoice,
             Course,
-            CourseCertificate,
+            Contact,
+            Company,
             CourseType,
             Venue,
             Enquiry,
             Address,
-            Party,
         ]
 
         # Users

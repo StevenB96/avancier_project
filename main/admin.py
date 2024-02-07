@@ -4,10 +4,10 @@ from .admin_classes import (
     AttendeeAdmin,
     BookinginvoiceAdmin,
     CourseAdmin,
-    CourseCertificateAdmin,    
+    ContactAdmin,
+    CompanyAdmin,    
     CourseTypeAdmin,
     VenueAdmin,
     EnquiryAdmin,
     AddressAdmin,
-    PartyAdmin,
 )

@@ -34,7 +34,7 @@ class VenueAdminForm(forms.ModelForm):
 
 class VenueAdmin(BaseAdmin):
     form = VenueAdminForm
-    exclude = []
+    exclude = ['id', 'created_at', 'updated_at']
 
 
 admin.site.register(Venue, VenueAdmin)
