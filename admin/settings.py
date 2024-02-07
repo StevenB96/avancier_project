@@ -28,6 +28,10 @@ DEBUG = IS_DEBUGGING
 
 STATIC_ROOT = BASE_DIR / 'static/'
 
+STATICFILES_DIRS = [
+    STATIC_ROOT,
+]
+
 STATIC_URL = 'static/'
 
 ALLOWED_HOSTS = ['avancier-project.stevenberrisford.com']
