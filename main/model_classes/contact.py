@@ -4,6 +4,7 @@ from .company import Company
 
 
 class Contact(models.Model):
+    # RELATIONSHIPS
     address = models.OneToOneField(
         Address,
         on_delete=models.CASCADE,
@@ -14,6 +15,10 @@ class Contact(models.Model):
         null=True,
         blank=True,
     )
+    # ATTRIBUTES FIELDS
+    name = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=255, blank=True, null=True)
+    email_address = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

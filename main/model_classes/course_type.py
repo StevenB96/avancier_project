@@ -3,17 +3,19 @@ from .certificate import Certificate
 
 
 class CourseType(models.Model):
+    # RELATIONSHIPS
     certificate = models.OneToOneField(
         Certificate,
         on_delete=models.CASCADE,
         null=True,
         blank=True,
     )
-    name = models.CharField(max_length=255, blank=True, null=True)
+    # ATTRIBUTES FIELDS
+    name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    duration = models.CharField(max_length=255, blank=True, null=True)
-    delivery_mode = models.IntegerField(blank=True, null=True)
-    price = models.CharField(max_length=255, blank=True, null=True)
+    duration = models.IntegerField()
+    delivery_mode = models.IntegerField()
+    price = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

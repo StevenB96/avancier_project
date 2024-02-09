@@ -4,6 +4,7 @@ from .address import Address
 
 
 class Hotel(models.Model):
+    # RELATIONSHIPS
     venues = models.ForeignKey(
         Venue,
         on_delete=models.CASCADE,
@@ -14,6 +15,7 @@ class Hotel(models.Model):
         null=True,
         blank=True,
     )
+    # ATTRIBUTES FIELDS
     name = models.CharField(max_length=255)
     website = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

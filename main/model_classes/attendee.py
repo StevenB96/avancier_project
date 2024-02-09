@@ -1,17 +1,15 @@
 from django.db import models
-from .bookinginvoice import Bookinginvoice
+from .course import Course
 
 
 class Attendee(models.Model):
     bookinginvoices = models.ForeignKey(
-        Bookinginvoice,
+        Course,
         on_delete=models.CASCADE,
     )
-    instruction_email_address = models.CharField(
-        max_length=255, blank=True, null=True)
-    exam_result_email_address = models.CharField(
-        max_length=255, blank=True, null=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255)
+    instruction_email_address = models.CharField(max_length=255, blank=True, null=True)
+    exam_result_email_address = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     instruction_sent_date = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)

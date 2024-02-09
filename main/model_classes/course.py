@@ -4,6 +4,7 @@ from .course_type import CourseType
 
 
 class Course(models.Model):
+    # RELATIONSHIPS
     venues = models.ForeignKey(
         Venue,
         on_delete=models.CASCADE,
@@ -12,13 +13,14 @@ class Course(models.Model):
         CourseType,
         on_delete=models.CASCADE,
     )
-    description = models.TextField(blank=True, null=True)
-    attendee_total = models.IntegerField(blank=True, null=True)
+    # ATTRIBUTES FIELDS
+    start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.description} - {self.id}"
+        return f"{self.id}"
 
     class Meta:
         verbose_name_plural = 'Courses'
