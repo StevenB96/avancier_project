@@ -5,7 +5,7 @@ from django_select2.forms import Select2Widget
 
 from ..model_classes import (
     Attendee,
-    Bookinginvoice,
+    Course,
 )
 
 
@@ -14,19 +14,19 @@ class AttendeeAdminForm(forms.ModelForm):
         model = Attendee
         fields = '__all__'
         widgets = {
-            'bookinginvoices': Select2Widget,
+            'courses': Select2Widget,
         }
         required = {
-            'bookinginvoices': False,
+            'courses': False,
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['bookinginvoices'].choices = [(bookinginvoices.id, str(
-            bookinginvoices)) for bookinginvoices in Bookinginvoice.objects.all()]
+        self.fields['courses'].choices = [(courses.id, str(
+            courses)) for courses in Course.objects.all()]
 
-    bookinginvoices = forms.ChoiceField(
+    courses = forms.ChoiceField(
         widget=Select2Widget,
         required=False,
     )
