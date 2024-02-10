@@ -3,7 +3,7 @@ from .course import Course
 
 
 class Attendee(models.Model):
-    bookinginvoices = models.ForeignKey(
+    courses = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
     )

@@ -10,7 +10,7 @@ from ..model_classes import (
 
 class CourseTypeAdminForm(forms.ModelForm):
     class Meta:
-        model = Certificate
+        model = CourseType
         fields = '__all__'
         widgets = {
             'certificate': Select2Widget,
