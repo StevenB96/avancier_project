@@ -24,12 +24,8 @@ class VenueAdminForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         self.fields['address'].choices = [
-            (address.id, str(address)) for address in Address.objects.all()]
-
-    address = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
+            (address.id, str(address))
+            for address in Address.objects.all()]
 
 
 class VenueAdmin(BaseAdmin):

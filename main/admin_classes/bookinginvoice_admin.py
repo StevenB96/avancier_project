@@ -27,18 +27,11 @@ class BookinginvoiceAdminForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         self.fields['contacts'].choices = [
-            (contacts.id, str(contacts)) for contacts in Contact.objects.all()]
+            (contact.id, str(contact))
+            for contact in Contact.objects.all()]
         self.fields['courses'].choices = [
-            (courses.id, str(courses)) for courses in Course.objects.all()]
-
-    contacts = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
-    courses = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
+            (course.id, str(course))
+            for course in Course.objects.all()]
 
 
 class BookinginvoiceAdmin(BaseAdmin):

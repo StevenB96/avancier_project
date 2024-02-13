@@ -26,17 +26,12 @@ class ContactAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['companies'].choices = [(companies.id, str(companies)) for companies in Company.objects.all()]
-        self.fields['address'].choices = [(adress.id, str(adress)) for adress in Address.objects.all()]
-
-    companies = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
-    address = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
+        self.fields['companies'].choices = [
+            (company.id, str(company))
+            for company in Company.objects.all()]
+        self.fields['address'].choices = [
+            (adress.id, str(adress))
+            for adress in Address.objects.all()]
 
 
 class ContactAdmin(BaseAdmin):

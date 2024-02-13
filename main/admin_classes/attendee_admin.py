@@ -23,13 +23,9 @@ class AttendeeAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['courses'].choices = [(courses.id, str(
-            courses)) for courses in Course.objects.all()]
-
-    courses = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
+        self.fields['courses'].choices = [
+            (course.id, str(course))
+            for course in Course.objects.all()]
 
 
 class AttendeeAdmin(BaseAdmin):

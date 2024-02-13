@@ -26,17 +26,12 @@ class CourseAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['venues'].choices = [(venues.id, str(venues)) for venues in Venue.objects.all()]
-        self.fields['course_types'].choices = [(course_types.id, str(course_types)) for course_types in CourseType.objects.all()]
-
-    venues = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
-    course_types = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
+        self.fields['venues'].choices = [
+            (venue.id, str(venue))
+            for venue in Venue.objects.all()]
+        self.fields['course_types'].choices = [
+            (course_type.id, str(course_type))
+            for course_type in CourseType.objects.all()]
 
 
 class CourseAdmin(BaseAdmin):

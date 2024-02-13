@@ -27,18 +27,11 @@ class HotelAdminForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         self.fields['venues'].choices = [
-            (venues.id, str(venues)) for venues in Venue.objects.all()]
+            (venues.id, str(venues))
+            for venues in Venue.objects.all()]
         self.fields['address'].choices = [
-            (address.id, str(address)) for address in Address.objects.all()]
-
-    venues = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
-    address = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
+            (address.id, str(address))
+            for address in Address.objects.all()]
 
 
 class HotelAdmin(BaseAdmin):

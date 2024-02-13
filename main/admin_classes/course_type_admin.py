@@ -8,6 +8,7 @@ from ..model_classes import (
     Certificate
 )
 
+
 class CourseTypeAdminForm(forms.ModelForm):
     class Meta:
         model = CourseType
@@ -22,12 +23,9 @@ class CourseTypeAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['certificate'].choices = [(certificate.id, str(certificate)) for certificate in Certificate.objects.all()]
-
-    certificate = forms.ChoiceField(
-        widget=Select2Widget,
-        required=False,
-    )
+        self.fields['certificate'].choices = [
+            (certificate.id, str(certificate))
+            for certificate in Certificate.objects.all()]
 
 
 class CourseTypeAdmin(BaseAdmin):

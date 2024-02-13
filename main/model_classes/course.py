@@ -26,3 +26,4 @@ class Course(models.Model):
         verbose_name_plural = 'Courses'
         db_table = 'course'
         managed = True
+
