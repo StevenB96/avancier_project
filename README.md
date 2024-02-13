@@ -38,6 +38,17 @@ Start the Django development server:
 
 python manage.py runserver
 
+## Set execute permission for directories
+chmod +x /home/admin/avancier_project/
+chmod +x /home/admin/avancier_project/static/
+
+## Set read permission for all files and directories within the Django application directory
+chmod -R o+r /home/admin/avancier_project/
+
+## If using SQLite you must do the following
+chmod 777 /home/admin/avancier_project
+chmod 766 /home/admin/avancier_project/db.sqlite3
+
 ## Run Migrations
 
 Apply initial migrations:
