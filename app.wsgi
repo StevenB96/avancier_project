@@ -2,7 +2,7 @@ import os
 import sys
 
 # Set the DJANGO_SETTINGS_MODULE environment variable
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'admin.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project_admin.settings')
 
 # Get the directory of the current script
 current_dir = os.path.dirname(os.path.abspath(__file__))
