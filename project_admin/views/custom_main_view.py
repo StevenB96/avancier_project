@@ -1,12 +1,13 @@
 from django.views import View
 from django.shortcuts import render
 from django.apps import apps
-from django.urls import reverse
 from django.templatetags.static import static
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CustomMainView(View):
-    template_name = 'main/model_list.html'
+class CustomMainView(LoginRequiredMixin, View):
+    template_name = 'project_admin/main_model_list.html'
+    login_url = '/admin/login/'
 
     def get(self, request, *args, **kwargs):
         app_list = []

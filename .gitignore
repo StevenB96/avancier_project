@@ -28,3 +28,5 @@ env.py
 Thumbs.db
 
 static/
+*.drawio
+*.drawio.bkp
