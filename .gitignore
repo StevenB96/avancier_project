@@ -26,3 +26,5 @@ env.py
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+static/
