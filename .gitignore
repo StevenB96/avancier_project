@@ -30,3 +30,6 @@ Thumbs.db
 static/
 *.drawio
 *.drawio.bkp
+
+# Pem files
+*.pem
