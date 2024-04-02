@@ -9,6 +9,7 @@ venv/
 env/
 *.env/
 .env/
+env.py
 
 # IDE-specific files
 .vscode/
@@ -26,5 +27,9 @@ env/
 .DS_Store
 Thumbs.db
 
-### Key files ###
+static/
+*.drawio
+*.drawio.bkp
+
+# Pem files
 *.pem
